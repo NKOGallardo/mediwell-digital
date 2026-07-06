@@ -77,14 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Meridian Health Centre — Trusted Family Doctors & Medical Care" },
+      {
+        name: "description",
+        content:
+          "Compassionate, professional family medicine, chronic care, women's & men's health, paediatrics, vaccinations and screening. Book online.",
+      },
+      { property: "og:site_name", content: "Meridian Health Centre" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
