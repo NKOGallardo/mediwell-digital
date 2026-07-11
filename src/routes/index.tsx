@@ -1,23 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import "../site.css";
-import heroImg from "../assets/hero.jpg";
-import doc1 from "../assets/doctor1.jpg";
-import doc2 from "../assets/doctor2.jpg";
-import doc3 from "../assets/doctor3.jpg";
 
 const CLINIC = {
   name: "Meridian Health Centre",
   tagline: "Compassionate care for every stage of life",
-  phone: "+1 (555) 010-2040",
-  phoneHref: "tel:+15550102040",
-  whatsapp: "15550102040",
+  phone: "083 727 5737",
+  phoneHref: "tel:+27837275737",
+  whatsapp: "27837275737",
   email: "care@meridianhealth.example",
   address: "128 Wellness Avenue, Suite 200, Cape Town, 8001",
   hoursMonFri: "07:30 – 18:00",
   hoursSat: "08:00 – 14:00",
   hoursSun: "Closed",
-  hoursHoliday: "Emergency Only",
   url: "https://meridianhealth.example",
 };
 
@@ -28,18 +23,18 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Meridian Health Centre offers professional family medicine, chronic disease management, women's & men's health, paediatrics, vaccinations and health screening. Book online today.",
+          "Meridian Health Centre offers IV therapy drips, reproductive & maternity care, general healthcare, screenings and procedures. Book today.",
       },
       {
         name: "keywords",
         content:
-          "healthcare centre, family doctor, medical clinic, chronic disease, women's health, paediatrics, vaccinations, HIV TB care, health screening, Cape Town clinic",
+          "healthcare centre, IV therapy, vitamin drip, family planning, maternity care, antenatal, HIV testing, health screening, Cape Town clinic",
       },
       { property: "og:title", content: `${CLINIC.name} — Trusted Family Doctors` },
       {
         property: "og:description",
         content:
-          "Modern, patient-first medical practice. Book an appointment with our experienced doctors.",
+          "Modern, patient-first medical practice offering IV drips, reproductive & maternity care, and general healthcare.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
@@ -60,7 +55,7 @@ export const Route = createFileRoute("/")({
           "@type": "MedicalClinic",
           name: CLINIC.name,
           url: CLINIC.url,
-          telephone: CLINIC.phone,
+          telephone: "+27837275737",
           email: CLINIC.email,
           address: {
             "@type": "PostalAddress",
@@ -85,9 +80,7 @@ export const Route = createFileRoute("/")({
           ],
           medicalSpecialty: [
             "FamilyPractice",
-            "Pediatric",
             "Obstetric",
-            "InternalMedicine",
             "PreventiveMedicine",
           ],
         }),
@@ -117,12 +110,10 @@ const I = {
   heart: "M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z",
   shield: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
   stethoscope: "M6 3v6a4 4 0 0 0 8 0V3M10 15a5 5 0 0 0 10 0v-1M20 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z",
-  people: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75",
   syringe: "M18 2l4 4M15 5l4 4M11.5 8.5L2 18v4h4l9.5-9.5M15 12l-3-3",
   activity: "M22 12h-4l-3 9L9 3l-3 9H2",
   baby: "M9 12h.01M15 12h.01M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5M17 21a5 5 0 0 0-10 0M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z",
   female: "M12 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10zM12 12v10M9 19h6",
-  male: "M14 4h6v6M20 4l-8 8M10 22a6 6 0 1 1 0-12 6 6 0 0 1 0 12z",
   clipboard: "M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 5v2h6V5",
   check: "M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3",
   phone: "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z",
@@ -138,22 +129,79 @@ const I = {
 };
 
 /* ---------- Data ---------- */
-const services = [
-  { icon: I.stethoscope, title: "General Consultations", desc: "Everyday medical care and expert diagnosis for all ages." },
-  { icon: I.people, title: "Family Medicine", desc: "Personalised primary care for the whole family." },
-  { icon: I.activity, title: "Chronic Disease Management", desc: "Ongoing support for diabetes, hypertension, asthma & more." },
-  { icon: I.female, title: "Women's Health", desc: "Screenings, contraception, prenatal & wellness care." },
-  { icon: I.male, title: "Men's Health", desc: "Preventive check-ups and targeted wellness plans." },
-  { icon: I.baby, title: "Child Healthcare", desc: "Well-baby visits, immunisations and paediatric care." },
-  { icon: I.shield, title: "HIV & TB Care", desc: "Confidential testing, treatment and long-term support." },
-  { icon: I.syringe, title: "Vaccinations", desc: "Routine and travel vaccinations for adults and children." },
-  { icon: I.clipboard, title: "Medical Check-ups", desc: "Executive and routine health assessments." },
-  { icon: I.heart, title: "Health Screening", desc: "Early detection panels for a healthier future." },
+type ServiceItem = { name: string; desc: string };
+type ServiceCategory = { icon: string; title: string; blurb: string; items: ServiceItem[] };
+
+const serviceCategories: ServiceCategory[] = [
+  {
+    icon: I.syringe,
+    title: "IV Therapy (Premium Drips)",
+    blurb: "Clinically formulated IV infusions for wellness, recovery and vitality.",
+    items: [
+      { name: "Vitamin Drip (Cocktail)", desc: "A powerful blend of essential vitamins delivered directly into the bloodstream." },
+      { name: "Jet Fuel", desc: "Premium formula with Vitamin C, Vitamin B Complex and Collagen for energy, skin health and revitalisation." },
+      { name: "Neurobion (Vitamin C)", desc: "Targeted infusion supporting nerve health, immunity and overall wellbeing." },
+      { name: "Glow Drip", desc: "Skin-brightening formula enriched with glutathione and antioxidants for a radiant complexion." },
+      { name: "Immune Booster Drip", desc: "High-dose vitamin and mineral infusion designed to fortify the immune system." },
+      { name: "Biotin / Vitamin B7", desc: "Promotes growth and strengthens hair, nails and skin metabolism from within." },
+      { name: "Weight Loss Drip", desc: "Metabolic-boosting infusion that enhances fat burning and energy." },
+      { name: "Sports Endurance & Recovery", desc: "Professional-grade hydration formula to accelerate muscle recovery and optimise performance." },
+      { name: "Energy Booster Drip", desc: "Combats fatigue and restores vitality using B vitamins and essential cofactors." },
+      { name: "Hangover Booster", desc: "Fast-acting rehydration and detox drip to restore balance." },
+    ],
+  },
+  {
+    icon: I.female,
+    title: "Reproductive Health",
+    blurb: "Confidential, respectful care across all family planning needs.",
+    items: [
+      { name: "All Family Planning Services", desc: "Comprehensive contraception counselling and planning." },
+      { name: "IUD Insertion & Removal", desc: "Sterile and professional intrauterine device placement and removal." },
+      { name: "Implanon Insertion & Removal", desc: "Precision placement and removal of subdermal contraceptive implants." },
+      { name: "Morning After Pill", desc: "Emergency contraception paired with professional counselling." },
+      { name: "Pregnancy Testing", desc: "Accurate and confidential testing with professional guidance." },
+      { name: "Pap Smear (Cervical Screening)", desc: "Private and respectful cervical cancer screenings." },
+    ],
+  },
+  {
+    icon: I.baby,
+    title: "Maternity & Neonatal Care",
+    blurb: "Supporting mothers and babies through every milestone.",
+    items: [
+      { name: "ANC First Visit & Follow-up", desc: "Comprehensive antenatal care to monitor mother and baby throughout pregnancy." },
+      { name: "Birth Options", desc: "Flexible planning for delivery at our centre or an assisted home birth with qualified midwives." },
+      { name: "3-Day Postnatal Care", desc: "Dedicated monitoring, support and education for mother and baby over the critical first three days post-birth." },
+      { name: "Baby Wellness & Immunizations", desc: "Growth tracking, developmental checks and scheduled childhood immunizations." },
+    ],
+  },
+  {
+    icon: I.stethoscope,
+    title: "General Healthcare",
+    blurb: "Everyday medical care with continuity you can trust.",
+    items: [
+      { name: "General Consultation", desc: "Medical consultations with flexible options to include or exclude medication." },
+      { name: "Follow-up Consultations", desc: "Continuity of care to track medical progress and adjust treatments." },
+      { name: "STI Treatment", desc: "Confidential diagnosis and treatment for sexually transmitted infections (medication included)." },
+      { name: "HIV Counselling, Testing & Management", desc: "Compassionate testing, counselling and long-term health management plans." },
+    ],
+  },
+  {
+    icon: I.clipboard,
+    title: "Screenings & Procedures",
+    blurb: "Preventive screening and minor procedures in a sterile setting.",
+    items: [
+      { name: "Health Monitoring", desc: "Blood Pressure (BP), Glucose (Blood Sugar) and Cholesterol testing." },
+      { name: "DNA Testing", desc: "Facilitated DNA testing with professional guidance (laboratory fees are separate)." },
+      { name: "Procedures & Wound Care", desc: "Sterile wound dressing, wound care follow-ups and hygienic suture (stitch) removal." },
+    ],
+  },
 ];
+
+const allServiceNames = serviceCategories.flatMap((c) => c.items.map((i) => i.name));
 
 const doctors = [
   {
-    photo: doc1,
+    initials: "AN",
     name: "Dr. Amara Nkosi",
     role: "Family Medicine",
     qual: "MBChB, MMed (Fam Med)",
@@ -161,7 +209,7 @@ const doctors = [
     bio: "Amara focuses on holistic family care with a special interest in women's wellness and preventive medicine.",
   },
   {
-    photo: doc2,
+    initials: "ER",
     name: "Dr. Ethan Reyes",
     role: "Internal Medicine",
     qual: "MBChB, FCP (SA)",
@@ -169,7 +217,7 @@ const doctors = [
     bio: "Ethan brings evidence-based care to chronic disease management and executive health screening.",
   },
   {
-    photo: doc3,
+    initials: "LM",
     name: "Dr. Lena Marais",
     role: "Paediatrics",
     qual: "MBChB, DCH, FCPaed",
@@ -285,7 +333,7 @@ function Hero() {
           </h1>
           <p>
             Trusted family doctors delivering personalised, evidence-based care.
-            From routine check-ups to chronic care — Meridian Health is here for
+            From IV wellness drips to maternity care — Meridian Health is here for
             every stage of your life.
           </p>
           <div className="hc-hero-actions">
@@ -303,13 +351,18 @@ function Hero() {
           </div>
         </div>
         <div className="hc-hero-visual">
-          <img
-            src={heroImg}
-            width={1024}
-            height={1024}
-            alt="Doctor speaking warmly with a patient in a bright, modern clinic"
-            fetchPriority="high"
-          />
+          <div className="hc-hero-panel" aria-hidden="true">
+            <div className="hc-hero-panel-inner">
+              <div className="hc-hero-badge"><Icon d={I.heart} size={28} /></div>
+              <div className="hc-hero-panel-title">Trusted care, every visit</div>
+              <div className="hc-hero-panel-sub">IV Therapy · Maternity · Family Medicine</div>
+              <div className="hc-hero-chips">
+                <span><Icon d={I.syringe} size={14} /> IV Drips</span>
+                <span><Icon d={I.baby} size={14} /> Maternity</span>
+                <span><Icon d={I.stethoscope} size={14} /> General</span>
+              </div>
+            </div>
+          </div>
           <div className="hc-hero-card">
             <div className="hc-hero-card-icon"><Icon d={I.shield} size={20} /></div>
             <div className="hc-hero-card-text">
@@ -359,15 +412,27 @@ function Services() {
         <Reveal className="hc-section-head">
           <span className="hc-eyebrow"><span className="hc-eyebrow-dot" /> Our Services</span>
           <h2>Comprehensive care under one roof</h2>
-          <p>From first check-ups to chronic conditions, our team is equipped to look after
-            every member of your family.</p>
+          <p>From premium IV therapy to maternity and general healthcare — everything
+            you need in one trusted practice.</p>
         </Reveal>
-        <div className="hc-services-grid">
-          {services.map((s, i) => (
-            <Reveal key={s.title} className="hc-service" delay={i * 40}>
-              <div className="hc-service-icon"><Icon d={s.icon} /></div>
-              <h3>{s.title}</h3>
-              <p>{s.desc}</p>
+        <div className="hc-service-cats">
+          {serviceCategories.map((cat, i) => (
+            <Reveal key={cat.title} className="hc-service-cat" delay={i * 60}>
+              <div className="hc-service-cat-head">
+                <div className="hc-service-cat-icon"><Icon d={cat.icon} /></div>
+                <div>
+                  <h3>{cat.title}</h3>
+                  <p>{cat.blurb}</p>
+                </div>
+              </div>
+              <ul className="hc-service-list">
+                {cat.items.map((it) => (
+                  <li key={it.name}>
+                    <strong>{it.name}</strong>
+                    <span>{it.desc}</span>
+                  </li>
+                ))}
+              </ul>
             </Reveal>
           ))}
         </div>
@@ -388,8 +453,8 @@ function Doctors() {
         <div className="hc-doctors-grid">
           {doctors.map((d, i) => (
             <Reveal key={d.name} className="hc-doctor" delay={i * 80}>
-              <div className="hc-doctor-photo">
-                <img src={d.photo} alt={`Portrait of ${d.name}, ${d.role}`} loading="lazy" width={1024} height={1024} />
+              <div className="hc-doctor-photo hc-doctor-initials" aria-hidden="true">
+                <span>{d.initials}</span>
               </div>
               <div className="hc-doctor-body">
                 <h3>{d.name}</h3>
@@ -412,7 +477,6 @@ function Hours() {
     ["Monday – Friday", CLINIC.hoursMonFri, false],
     ["Saturday", CLINIC.hoursSat, false],
     ["Sunday", CLINIC.hoursSun, true],
-    ["Public Holidays", CLINIC.hoursHoliday, false],
   ] as const;
   return (
     <section className="hc-section hc-section-alt" id="hours">
@@ -492,7 +556,7 @@ function Appointment() {
               </div>
               <div className="hc-field">
                 <label htmlFor="phone">Phone Number</label>
-                <input id="phone" type="tel" value={form.phone} onChange={(e) => set("phone", e.target.value)} placeholder="+1 555 010 2040" />
+                <input id="phone" type="tel" value={form.phone} onChange={(e) => set("phone", e.target.value)} placeholder="083 727 5737" />
                 {errors.phone && <span className="err">{errors.phone}</span>}
               </div>
               <div className="hc-field">
@@ -504,7 +568,13 @@ function Appointment() {
                 <label htmlFor="service">Service Required</label>
                 <select id="service" value={form.service} onChange={(e) => set("service", e.target.value)}>
                   <option value="">Select a service…</option>
-                  {services.map((s) => <option key={s.title}>{s.title}</option>)}
+                  {serviceCategories.map((cat) => (
+                    <optgroup key={cat.title} label={cat.title}>
+                      {cat.items.map((it) => (
+                        <option key={it.name}>{it.name}</option>
+                      ))}
+                    </optgroup>
+                  ))}
                 </select>
                 {errors.service && <span className="err">{errors.service}</span>}
               </div>
@@ -677,7 +747,7 @@ function Footer() {
           </div>
           <div>
             <h4>Services</h4>
-            {services.slice(0, 5).map((s) => <a key={s.title} href="#services">{s.title}</a>)}
+            {allServiceNames.slice(0, 5).map((n) => <a key={n} href="#services">{n}</a>)}
           </div>
           <div>
             <h4>Contact</h4>
