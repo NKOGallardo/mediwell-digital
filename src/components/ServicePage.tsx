@@ -63,20 +63,3 @@ export function ServicePage({ category }: { category: ServiceCategory }) {
     </Layout>
   );
 }
-
-export function createServiceRoute(path: string, category: ServiceCategory) {
-  return createFileRoute(path as never)({
-    component: () => <ServicePage category={category} />,
-    head: () => ({
-      meta: [
-        { title: `${category.title} — ${CLINIC.name}` },
-        { name: "description", content: `${category.blurb} Book ${category.title.toLowerCase()} at ${CLINIC.name} in Noordwyk, Midrand.` },
-        { property: "og:title", content: `${category.title} — ${CLINIC.name}` },
-        { property: "og:description", content: category.blurb },
-        { property: "og:type", content: "website" },
-        { property: "og:url", content: path },
-      ],
-      links: [{ rel: "canonical", href: path }],
-    }),
-  });
-}
