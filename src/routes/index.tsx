@@ -557,7 +557,7 @@ function Contact() {
           <Reveal className="hc-map" delay={100}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.7204455624767!2d28.015!3d-26.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sImbuia+Crescent%2C+Noordwyk%2C+Midrand!5e0!3m2!1sen!2sza!4v1700000000000!5m2!1sen!2sza"
-              allowFullScreen=""
+              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Elegant Healthcare Centre location - Noordwyk, Midrand"
