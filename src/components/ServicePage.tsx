@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { CLINIC } from "../lib/clinic";
 import { type ServiceCategory } from "../lib/services";
 import { Icon, I } from "./Icon";
