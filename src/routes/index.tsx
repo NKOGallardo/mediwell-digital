@@ -1,20 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
-import "../site.css";
-
-const CLINIC = {
-  name: "Meridian Health Centre",
-  tagline: "Compassionate care for every stage of life",
-  phone: "083 727 5737",
-  phoneHref: "tel:+27837275737",
-  whatsapp: "27837275737",
-  email: "none",
-  address: "Imbuia Crescent, Noordwyk, Midrand",
-  hoursMonFri: "07:30 – 18:00",
-  hoursSat: "08:00 – 14:00",
-  hoursSun: "Closed",
-  url: "https://meridianhealth.example",
-};
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { CLINIC } from "../lib/clinic";
+import { serviceCategories } from "../lib/services";
+import { Icon, I } from "../components/Icon";
+import { Reveal } from "../components/Reveal";
+import { Layout } from "../components/Layout";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -88,112 +78,6 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-/* ---------- Small icon set (inline SVG) ---------- */
-const Icon = ({ d, size = 22 }: { d: string; size?: number }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d={d} />
-  </svg>
-);
-const I = {
-  heart: "M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z",
-  shield: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
-  stethoscope: "M6 3v6a4 4 0 0 0 8 0V3M10 15a5 5 0 0 0 10 0v-1M20 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z",
-  syringe: "M18 2l4 4M15 5l4 4M11.5 8.5L2 18v4h4l9.5-9.5M15 12l-3-3",
-  activity: "M22 12h-4l-3 9L9 3l-3 9H2",
-  baby: "M9 12h.01M15 12h.01M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5M17 21a5 5 0 0 0-10 0M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z",
-  female: "M12 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10zM12 12v10M9 19h6",
-  clipboard: "M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 5v2h6V5",
-  check: "M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3",
-  phone: "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z",
-  mail: "M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6",
-  pin: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0zM12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z",
-  arrowUp: "M12 19V5M5 12l7-7 7 7",
-  plus: "M12 5v14M5 12h14",
-  whatsapp: "M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6a12 12 0 0 0 5.8 1.5C18.6 24 24 18.6 24 12c0-3.2-1.2-6.2-3.5-8.5zM12 22a10 10 0 0 1-5.1-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A10 10 0 1 1 22 12c0 5.5-4.5 10-10 10zm5.4-7.5l-2-1c-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c0-.2 0-.4-.1-.5l-.9-2.2c-.2-.5-.4-.4-.5-.4h-.5c-.1 0-.4 0-.6.3-.2.3-.9.8-.9 2 0 1.2.9 2.4 1 2.6.1.2 1.8 2.7 4.3 3.8l1.4.6c.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1l-.4-.1z",
-  clock: "M12 6v6l4 2M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z",
-};
-
-/* ---------- Data ---------- */
-type ServiceItem = { name: string; desc: string };
-type ServiceCategory = { icon: string; title: string; blurb: string; items: ServiceItem[] };
-
-const serviceCategories: ServiceCategory[] = [
-  {
-    icon: I.syringe,
-    title: "IV Therapy (Premium Drips)",
-    blurb: "Clinically formulated IV infusions for wellness, recovery and vitality.",
-    items: [
-      { name: "Vitamin Drip (Cocktail)", desc: "A powerful blend of essential vitamins delivered directly into the bloodstream." },
-      { name: "Jet Fuel", desc: "Premium formula with Vitamin C, Vitamin B Complex and Collagen for energy, skin health and revitalisation." },
-      { name: "Neurobion (Vitamin C)", desc: "Targeted infusion supporting nerve health, immunity and overall wellbeing." },
-      { name: "Glow Drip", desc: "Skin-brightening formula enriched with glutathione and antioxidants for a radiant complexion." },
-      { name: "Immune Booster Drip", desc: "High-dose vitamin and mineral infusion designed to fortify the immune system." },
-      { name: "Biotin / Vitamin B7", desc: "Promotes growth and strengthens hair, nails and skin metabolism from within." },
-      { name: "Weight Loss Drip", desc: "Metabolic-boosting infusion that enhances fat burning and energy." },
-      { name: "Sports Endurance & Recovery", desc: "Professional-grade hydration formula to accelerate muscle recovery and optimise performance." },
-      { name: "Energy Booster Drip", desc: "Combats fatigue and restores vitality using B vitamins and essential cofactors." },
-      { name: "Hangover Booster", desc: "Fast-acting rehydration and detox drip to restore balance." },
-    ],
-  },
-  {
-    icon: I.female,
-    title: "Reproductive Health",
-    blurb: "Confidential, respectful care across all family planning needs.",
-    items: [
-      { name: "All Family Planning Services", desc: "Comprehensive contraception counselling and planning." },
-      { name: "IUD Insertion & Removal", desc: "Sterile and professional intrauterine device placement and removal." },
-      { name: "Implanon Insertion & Removal", desc: "Precision placement and removal of subdermal contraceptive implants." },
-      { name: "Morning After Pill", desc: "Emergency contraception paired with professional counselling." },
-      { name: "Pregnancy Testing", desc: "Accurate and confidential testing with professional guidance." },
-      { name: "Pap Smear (Cervical Screening)", desc: "Private and respectful cervical cancer screenings." },
-    ],
-  },
-  {
-    icon: I.baby,
-    title: "Maternity & Neonatal Care",
-    blurb: "Supporting mothers and babies through every milestone.",
-    items: [
-      { name: "ANC First Visit & Follow-up", desc: "Comprehensive antenatal care to monitor mother and baby throughout pregnancy." },
-      { name: "Birth Options", desc: "Flexible planning for delivery at our centre or an assisted home birth with qualified midwives." },
-      { name: "3-Day Postnatal Care", desc: "Dedicated monitoring, support and education for mother and baby over the critical first three days post-birth." },
-      { name: "Baby Wellness & Immunizations", desc: "Growth tracking, developmental checks and scheduled childhood immunizations." },
-    ],
-  },
-  {
-    icon: I.stethoscope,
-    title: "General Healthcare",
-    blurb: "Everyday medical care with continuity you can trust.",
-    items: [
-      { name: "General Consultation", desc: "Medical consultations with flexible options to include or exclude medication." },
-      { name: "Follow-up Consultations", desc: "Continuity of care to track medical progress and adjust treatments." },
-      { name: "STI Treatment", desc: "Confidential diagnosis and treatment for sexually transmitted infections (medication included)." },
-      { name: "HIV Counselling, Testing & Management", desc: "Compassionate testing, counselling and long-term health management plans." },
-    ],
-  },
-  {
-    icon: I.clipboard,
-    title: "Screenings & Procedures",
-    blurb: "Preventive screening and minor procedures in a sterile setting.",
-    items: [
-      { name: "Health Monitoring", desc: "Blood Pressure (BP), Glucose (Blood Sugar) and Cholesterol testing." },
-      { name: "DNA Testing", desc: "Facilitated DNA testing with professional guidance (laboratory fees are separate)." },
-      { name: "Procedures & Wound Care", desc: "Sterile wound dressing, wound care follow-ups and hygienic suture (stitch) removal." },
-    ],
-  },
-];
-
-const allServiceNames = serviceCategories.flatMap((c) => c.items.map((i) => i.name));
-
 const faqs = [
   { q: "Do I need to book an appointment?", a: "We recommend booking in advance to secure your preferred time, but walk-ins are welcome during regular hours based on availability." },
   { q: "Which medical aids do you accept?", a: "We accept all major medical aid schemes. Private patients are also welcome with transparent pricing before every consultation." },
@@ -202,7 +86,6 @@ const faqs = [
   { q: "Is parking available on site?", a: "Yes, secure covered parking is provided for all patients free of charge." },
 ];
 
-/* ---------- Page ---------- */
 function HomePage() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -216,64 +99,17 @@ function HomePage() {
         <div className="hc-loader-ring" role="progressbar" aria-label="Loading" />
       </div>
 
-      <Navbar />
-      <main id="main">
+      <Layout>
         <Hero />
         <About />
         <Services />
+        <MedicalAid />
         <Hours />
         <Appointment />
         <FAQ />
         <Contact />
-      </main>
-      <Footer />
-      <FloatingActions />
+      </Layout>
     </>
-  );
-}
-
-/* ---------- Sections ---------- */
-function Navbar() {
-  const [open, setOpen] = useState(false);
-  const links = [
-    ["About", "#about"],
-    ["Services", "#services"],
-    ["Hours", "#hours"],
-    ["FAQ", "#faq"],
-    ["Contact", "#contact"],
-  ];
-  return (
-    <header className="hc-nav">
-      <div className="hc-container hc-nav-inner">
-        <a href="#top" className="hc-logo" aria-label={CLINIC.name}>
-          <span className="hc-logo-mark" aria-hidden="true">
-            <Icon d={I.heart} size={18} />
-          </span>
-          Meridian Health
-        </a>
-        <nav className="hc-nav-links mobile-hidden" aria-label="Primary">
-          {links.map(([l, h]) => (
-            <a key={h} href={h}>{l}</a>
-          ))}
-          <a href="#appointment" className="hc-btn hc-btn-primary hc-nav-cta">
-            Book Appointment
-          </a>
-        </nav>
-        <button className="hc-burger" aria-label="Toggle menu" aria-expanded={open} onClick={() => setOpen((v) => !v)}>
-          <span /><span /><span />
-        </button>
-      </div>
-      {open && (
-        <div className="hc-nav-mobile">
-          {links.map(([l, h]) => (
-            <a key={h} href={h} onClick={() => setOpen(false)}>{l}</a>
-          ))}
-          <a href="#appointment" className="hc-btn hc-btn-primary" onClick={() => setOpen(false)}>
-            Book Appointment
-          </a>
-        </div>
-      )}
-    </header>
   );
 }
 
@@ -295,9 +131,9 @@ function Hero() {
             every stage of your life.
           </p>
           <div className="hc-hero-actions">
-            <a href="#appointment" className="hc-btn hc-btn-primary">
+            <Link to="/" hash="appointment" className="hc-btn hc-btn-primary">
               <Icon d={I.plus} size={18} /> Book Appointment
-            </a>
+            </Link>
             <a href={CLINIC.phoneHref} className="hc-btn hc-btn-ghost">
               <Icon d={I.phone} size={18} /> Call Now
             </a>
@@ -385,8 +221,54 @@ function Services() {
                   </li>
                 ))}
               </ul>
+              <Link to={`/services/${cat.slug}`} className="hc-service-cat-link">
+                <span>Learn more</span>
+                <Icon d={I.chevronRight} size={16} />
+              </Link>
             </Reveal>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MedicalAid() {
+  const partners = ["Discovery Health", "Bonitas", "Momentum", "Medshield", "Fedhealth", "Profmed", "BestMed", "GEMS"];
+  const accreditations = [
+    { icon: I.shield, title: "HPCSA Registered", desc: "All practitioners are registered with the Health Professions Council of South Africa." },
+    { icon: I.award, title: "BHF Accredited", desc: "Our practice is accredited by the Board of Healthcare Funders." },
+    { icon: I.check, title: "Medical Aid Friendly", desc: "We accept all major medical aid schemes and process claims on your behalf." },
+  ];
+  return (
+    <section className="hc-section" id="medical-aid">
+      <div className="hc-container">
+        <Reveal className="hc-section-head">
+          <span className="hc-eyebrow"><span className="hc-eyebrow-dot" /> Medical Aid & Accreditation</span>
+          <h2>Trusted care, recognised standards</h2>
+          <p>We are an accredited practice that works with all major medical aid schemes in South Africa.</p>
+        </Reveal>
+        <div className="hc-medicalaid-grid">
+          <Reveal className="hc-medicalaid-partners" delay={60}>
+            <h3>Accepted medical aids</h3>
+            <div className="hc-medicalaid-tags">
+              {partners.map((p) => (
+                <span key={p} className="hc-medicalaid-tag">{p}</span>
+              ))}
+            </div>
+            <p className="hc-medicalaid-note">Don't see your scheme? Contact us — we likely accept it too.</p>
+          </Reveal>
+          <div className="hc-medicalaid-accreds">
+            {accreditations.map((a, i) => (
+              <Reveal key={a.title} className="hc-medicalaid-card" delay={i * 80}>
+                <div className="hc-medicalaid-icon"><Icon d={a.icon} size={24} /></div>
+                <div>
+                  <h4>{a.title}</h4>
+                  <p>{a.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -566,109 +448,5 @@ function Contact() {
         </div>
       </div>
     </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="hc-footer">
-      <div className="hc-container">
-        <div className="hc-footer-grid">
-          <div className="hc-footer-brand">
-            <div className="hc-logo" style={{ color: "#fff" }}>
-              <span className="hc-logo-mark" aria-hidden="true"><Icon d={I.heart} size={18} /></span>
-              Meridian Health
-            </div>
-            <p style={{ marginTop: 16 }}>Compassionate healthcare for every stage of life. Serving our community with modern, patient-first medicine.</p>
-          </div>
-          <div>
-            <h4>Quick Links</h4>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#appointment">Book Appointment</a>
-            <a href="#faq">FAQ</a>
-          </div>
-          <div>
-            <h4>Services</h4>
-            {allServiceNames.slice(0, 5).map((n) => <a key={n} href="#services">{n}</a>)}
-          </div>
-          <div>
-            <h4>Contact</h4>
-            <a href={CLINIC.phoneHref}>{CLINIC.phone}</a>
-            <span style={{ color: "#c5d3e0", display: "block", padding: "5px 0", fontSize: 14 }}>{CLINIC.email}</span>
-            <a href="#contact">{CLINIC.address}</a>
-          </div>
-        </div>
-        <div className="hc-footer-bottom">
-          <span>© {new Date().getFullYear()} {CLINIC.name}. All rights reserved.</span>
-          <span>Developed by <a href="https://NKOgallardo.link" target="_blank" rel="noopener noreferrer" style={{ color: "#8fa2b6" }}>NKO</a></span>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-function FloatingActions() {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 500);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  return (
-    <>
-      <a
-        href={`https://wa.me/${CLINIC.whatsapp}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hc-whatsapp"
-        aria-label="Chat on WhatsApp"
-      >
-        <Icon d={I.whatsapp} size={24} />
-      </a>
-      <button
-        className={`hc-scrolltop ${visible ? "visible" : ""}`}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        aria-label="Scroll to top"
-      >
-        <Icon d={I.arrowUp} size={18} />
-      </button>
-    </>
-  );
-}
-
-/* ---------- Reveal on scroll ---------- */
-function Reveal({
-  children,
-  className = "",
-  delay = 0,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  delay?: number;
-}) {
-  const [ref, setRef] = useState<HTMLDivElement | null>(null);
-  const [seen, setSeen] = useState(false);
-  useEffect(() => {
-    if (!ref) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setSeen(true);
-            io.disconnect();
-          }
-        });
-      },
-      { threshold: 0.12 },
-    );
-    io.observe(ref);
-    return () => io.disconnect();
-  }, [ref]);
-  const style = useMemo(() => ({ transitionDelay: `${delay}ms` }), [delay]);
-  return (
-    <div ref={setRef} className={`hc-reveal ${seen ? "in" : ""} ${className}`} style={style}>
-      {children}
-    </div>
   );
 }
