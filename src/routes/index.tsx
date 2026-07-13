@@ -8,8 +8,8 @@ const CLINIC = {
   phone: "083 727 5737",
   phoneHref: "tel:+27837275737",
   whatsapp: "27837275737",
-  email: "care@meridianhealth.example",
-  address: "128 Wellness Avenue, Suite 200, Cape Town, 8001",
+  email: "none",
+  address: "Imbuia Crescent, Noordwyk, Midrand",
   hoursMonFri: "07:30 – 18:00",
   hoursSat: "08:00 – 14:00",
   hoursSun: "Closed",
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/")({
       {
         name: "keywords",
         content:
-          "healthcare centre, IV therapy, vitamin drip, family planning, maternity care, antenatal, HIV testing, health screening, Cape Town clinic",
+          "healthcare centre, IV therapy, vitamin drip, family planning, maternity care, antenatal, HIV testing, health screening, Midrand clinic",
       },
       { property: "og:title", content: `${CLINIC.name} — Trusted Family Doctors` },
       {
@@ -56,12 +56,10 @@ export const Route = createFileRoute("/")({
           name: CLINIC.name,
           url: CLINIC.url,
           telephone: "+27837275737",
-          email: CLINIC.email,
           address: {
             "@type": "PostalAddress",
-            streetAddress: "128 Wellness Avenue, Suite 200",
-            addressLocality: "Cape Town",
-            postalCode: "8001",
+            streetAddress: "Imbuia Crescent",
+            addressLocality: "Noordwyk, Midrand",
             addressCountry: "ZA",
           },
           openingHoursSpecification: [
@@ -122,9 +120,6 @@ const I = {
   arrowUp: "M12 19V5M5 12l7-7 7 7",
   plus: "M12 5v14M5 12h14",
   whatsapp: "M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6a12 12 0 0 0 5.8 1.5C18.6 24 24 18.6 24 12c0-3.2-1.2-6.2-3.5-8.5zM12 22a10 10 0 0 1-5.1-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A10 10 0 1 1 22 12c0 5.5-4.5 10-10 10zm5.4-7.5l-2-1c-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c0-.2 0-.4-.1-.5l-.9-2.2c-.2-.5-.4-.4-.5-.4h-.5c-.1 0-.4 0-.6.3-.2.3-.9.8-.9 2 0 1.2.9 2.4 1 2.6.1.2 1.8 2.7 4.3 3.8l1.4.6c.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1l-.4-.1z",
-  fb: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
-  ig: "M3 3h18v18H3zM16 11.4a4 4 0 1 1-4.6-4.6 4 4 0 0 1 4.6 4.6zM17.5 6.5h.01",
-  x: "M18 6L6 18M6 6l12 12",
   clock: "M12 6v6l4 2M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z",
 };
 
@@ -199,40 +194,6 @@ const serviceCategories: ServiceCategory[] = [
 
 const allServiceNames = serviceCategories.flatMap((c) => c.items.map((i) => i.name));
 
-const doctors = [
-  {
-    initials: "AN",
-    name: "Dr. Amara Nkosi",
-    role: "Family Medicine",
-    qual: "MBChB, MMed (Fam Med)",
-    exp: "12 yrs",
-    bio: "Amara focuses on holistic family care with a special interest in women's wellness and preventive medicine.",
-  },
-  {
-    initials: "ER",
-    name: "Dr. Ethan Reyes",
-    role: "Internal Medicine",
-    qual: "MBChB, FCP (SA)",
-    exp: "15 yrs",
-    bio: "Ethan brings evidence-based care to chronic disease management and executive health screening.",
-  },
-  {
-    initials: "LM",
-    name: "Dr. Lena Marais",
-    role: "Paediatrics",
-    qual: "MBChB, DCH, FCPaed",
-    exp: "9 yrs",
-    bio: "Lena is passionate about child development, immunisation and supporting new parents through every milestone.",
-  },
-];
-
-const testimonials = [
-  { q: "The team is warm, professional and never rushes an appointment. Truly patient-first care.", a: "Priya S.", r: "Patient since 2021", s: 5 },
-  { q: "Dr. Nkosi took the time to explain everything about my treatment. I finally feel in control of my health.", a: "Marcus D.", r: "Family patient", s: 5 },
-  { q: "Booking online is effortless and the clinic is spotless. Highly recommend Meridian.", a: "Chloé v.d.M.", r: "Verified review", s: 5 },
-  { q: "They looked after my baby's vaccinations with so much care. Grateful for Dr. Marais and the nurses.", a: "Nadia K.", r: "New parent", s: 5 },
-];
-
 const faqs = [
   { q: "Do I need to book an appointment?", a: "We recommend booking in advance to secure your preferred time, but walk-ins are welcome during regular hours based on availability." },
   { q: "Which medical aids do you accept?", a: "We accept all major medical aid schemes. Private patients are also welcome with transparent pricing before every consultation." },
@@ -260,10 +221,8 @@ function HomePage() {
         <Hero />
         <About />
         <Services />
-        <Doctors />
         <Hours />
         <Appointment />
-        <Testimonials />
         <FAQ />
         <Contact />
       </main>
@@ -279,7 +238,6 @@ function Navbar() {
   const links = [
     ["About", "#about"],
     ["Services", "#services"],
-    ["Doctors", "#doctors"],
     ["Hours", "#hours"],
     ["FAQ", "#faq"],
     ["Contact", "#contact"],
@@ -344,11 +302,6 @@ function Hero() {
               <Icon d={I.phone} size={18} /> Call Now
             </a>
           </div>
-          <div className="hc-hero-stats">
-            <div className="hc-stat"><strong>15+</strong><span>Years serving families</span></div>
-            <div className="hc-stat"><strong>12k+</strong><span>Patients cared for</span></div>
-            <div className="hc-stat"><strong>4.9★</strong><span>Average patient rating</span></div>
-          </div>
         </div>
         <div className="hc-hero-visual">
           <div className="hc-hero-panel" aria-hidden="true">
@@ -388,8 +341,7 @@ function About() {
         <Reveal className="hc-section-head">
           <span className="hc-eyebrow"><span className="hc-eyebrow-dot" /> About Us</span>
           <h2>Care that treats you like a person, not a chart</h2>
-          <p>Meridian Health Centre has served families for over fifteen years, combining
-            modern medicine with the kind of personal attention every patient deserves.</p>
+          <p>Meridian Health Centre combines modern medicine with the kind of personal attention every patient deserves.</p>
         </Reveal>
         <div className="hc-about-grid">
           {cards.map((c, i) => (
@@ -441,37 +393,6 @@ function Services() {
   );
 }
 
-function Doctors() {
-  return (
-    <section className="hc-section" id="doctors">
-      <div className="hc-container">
-        <Reveal className="hc-section-head">
-          <span className="hc-eyebrow"><span className="hc-eyebrow-dot" /> Meet the Team</span>
-          <h2>Experienced doctors, familiar faces</h2>
-          <p>Board-certified professionals dedicated to your long-term health.</p>
-        </Reveal>
-        <div className="hc-doctors-grid">
-          {doctors.map((d, i) => (
-            <Reveal key={d.name} className="hc-doctor" delay={i * 80}>
-              <div className="hc-doctor-photo hc-doctor-initials" aria-hidden="true">
-                <span>{d.initials}</span>
-              </div>
-              <div className="hc-doctor-body">
-                <h3>{d.name}</h3>
-                <div className="hc-doctor-role">{d.role}</div>
-                <div className="hc-doctor-meta">
-                  <span>{d.qual}</span><span>{d.exp} experience</span>
-                </div>
-                <p>{d.bio}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Hours() {
   const rows = [
     ["Monday – Friday", CLINIC.hoursMonFri, false],
@@ -510,34 +431,6 @@ function Hours() {
 }
 
 function Appointment() {
-  const [form, setForm] = useState({
-    name: "", phone: "", email: "", date: "", time: "", service: "", message: "",
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [sent, setSent] = useState(false);
-
-  const validate = () => {
-    const e: Record<string, string> = {};
-    if (form.name.trim().length < 2) e.name = "Please enter your full name";
-    if (!/^[\d\s()+-]{7,}$/.test(form.phone.trim())) e.phone = "Please enter a valid phone number";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e.email = "Please enter a valid email";
-    if (!form.date) e.date = "Choose a preferred date";
-    if (!form.time) e.time = "Choose a preferred time";
-    if (!form.service) e.service = "Select a service";
-    setErrors(e);
-    return Object.keys(e).length === 0;
-  };
-
-  const submit = (ev: React.FormEvent) => {
-    ev.preventDefault();
-    if (!validate()) return;
-    setSent(true);
-    setForm({ name: "", phone: "", email: "", date: "", time: "", service: "", message: "" });
-    setTimeout(() => setSent(false), 6000);
-  };
-
-  const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
-
   return (
     <section className="hc-section" id="appointment">
       <div className="hc-container">
@@ -547,50 +440,50 @@ function Appointment() {
           <p>Fill in your details and our team will confirm your appointment shortly.</p>
         </Reveal>
         <Reveal>
-          <form className="hc-form" onSubmit={submit} noValidate>
+          <form
+            id="booking-form"
+            className="hc-form"
+            action="https://formspree.io/f/xykdqrky"
+            method="POST"
+            noValidate
+          >
             <div className="hc-form-grid">
               <div className="hc-field">
                 <label htmlFor="name">Full Name</label>
-                <input id="name" value={form.name} onChange={(e) => set("name", e.target.value)} placeholder="Jane Doe" />
-                {errors.name && <span className="err">{errors.name}</span>}
+                <input id="name" name="name" type="text" placeholder="Jane Doe" required />
               </div>
               <div className="hc-field">
                 <label htmlFor="phone">Phone Number</label>
-                <input id="phone" type="tel" value={form.phone} onChange={(e) => set("phone", e.target.value)} placeholder="083 727 5737" />
-                {errors.phone && <span className="err">{errors.phone}</span>}
+                <input id="phone" name="phone" type="tel" placeholder="083 727 5737" required />
               </div>
               <div className="hc-field">
                 <label htmlFor="email">Email</label>
-                <input id="email" type="email" value={form.email} onChange={(e) => set("email", e.target.value)} placeholder="you@email.com" />
-                {errors.email && <span className="err">{errors.email}</span>}
+                <input id="email" name="email" type="email" placeholder="you@email.com" required />
               </div>
               <div className="hc-field">
                 <label htmlFor="service">Service Required</label>
-                <select id="service" value={form.service} onChange={(e) => set("service", e.target.value)}>
+                <select id="service" name="service" required>
                   <option value="">Select a service…</option>
                   {serviceCategories.map((cat) => (
                     <optgroup key={cat.title} label={cat.title}>
                       {cat.items.map((it) => (
-                        <option key={it.name}>{it.name}</option>
+                        <option key={it.name} value={it.name}>{it.name}</option>
                       ))}
                     </optgroup>
                   ))}
                 </select>
-                {errors.service && <span className="err">{errors.service}</span>}
               </div>
               <div className="hc-field">
                 <label htmlFor="date">Preferred Date</label>
-                <input id="date" type="date" value={form.date} onChange={(e) => set("date", e.target.value)} />
-                {errors.date && <span className="err">{errors.date}</span>}
+                <input id="date" name="date" type="date" required />
               </div>
               <div className="hc-field">
                 <label htmlFor="time">Preferred Time</label>
-                <input id="time" type="time" value={form.time} onChange={(e) => set("time", e.target.value)} />
-                {errors.time && <span className="err">{errors.time}</span>}
+                <input id="time" name="time" type="time" required />
               </div>
               <div className="hc-field full">
                 <label htmlFor="message">Message (optional)</label>
-                <textarea id="message" value={form.message} onChange={(e) => set("message", e.target.value)} placeholder="Anything we should know before your visit…" />
+                <textarea id="message" name="message" placeholder="Anything we should know before your visit…" />
               </div>
             </div>
             <div className="hc-form-actions">
@@ -598,52 +491,8 @@ function Appointment() {
                 <Icon d={I.check} size={18} /> Request Appointment
               </button>
             </div>
-            {sent && (
-              <div className="hc-form-success" role="status">
-                ✓ Thank you! We received your request and will confirm shortly.
-              </div>
-            )}
           </form>
         </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function Testimonials() {
-  const [i, setI] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setI((v) => (v + 1) % testimonials.length), 6000);
-    return () => clearInterval(t);
-  }, []);
-  const t = testimonials[i];
-  return (
-    <section className="hc-section hc-section-alt">
-      <div className="hc-container">
-        <Reveal className="hc-section-head">
-          <span className="hc-eyebrow"><span className="hc-eyebrow-dot" /> Patient Stories</span>
-          <h2>Trusted by families across the city</h2>
-        </Reveal>
-        <div className="hc-testimonial-wrap">
-          <div className="hc-testimonial" key={i}>
-            <div className="hc-testimonial-stars" aria-label={`${t.s} out of 5 stars`}>{"★".repeat(t.s)}</div>
-            <p className="hc-testimonial-quote">"{t.q}"</p>
-            <div className="hc-testimonial-author">{t.a}</div>
-            <div className="hc-testimonial-role">{t.r}</div>
-          </div>
-          <div className="hc-testimonial-dots" role="tablist">
-            {testimonials.map((_, idx) => (
-              <button
-                key={idx}
-                className={idx === i ? "active" : ""}
-                onClick={() => setI(idx)}
-                aria-label={`Show testimonial ${idx + 1}`}
-                aria-selected={idx === i}
-                role="tab"
-              />
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -681,7 +530,7 @@ function Contact() {
         <Reveal className="hc-section-head">
           <span className="hc-eyebrow"><span className="hc-eyebrow-dot" /> Contact</span>
           <h2>We'd love to hear from you</h2>
-          <p>Reach out by phone, email or WhatsApp — or drop by during opening hours.</p>
+          <p>Reach out by phone or WhatsApp — or drop by during opening hours.</p>
         </Reveal>
         <div className="hc-contact-grid">
           <Reveal className="hc-contact-card">
@@ -691,7 +540,7 @@ function Contact() {
             </div>
             <div className="hc-contact-item">
               <div className="hc-contact-icon"><Icon d={I.mail} /></div>
-              <div><strong>Email us</strong><a href={`mailto:${CLINIC.email}`}>{CLINIC.email}</a></div>
+              <div><strong>Email us</strong><span>{CLINIC.email}</span></div>
             </div>
             <div className="hc-contact-item">
               <div className="hc-contact-icon"><Icon d={I.pin} /></div>
@@ -707,11 +556,11 @@ function Contact() {
           </Reveal>
           <Reveal className="hc-map" delay={100}>
             <iframe
-              title="Meridian Health Centre location on Google Maps"
-              src="https://www.google.com/maps?q=Cape+Town+City+Centre&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.7204455624767!2d28.015!3d-26.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sImbuia+Crescent%2C+Noordwyk%2C+Midrand!5e0!3m2!1sen!2sza!4v1700000000000!5m2!1sen!2sza"
+              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
+              title="Elegant Healthcare Centre location - Noordwyk, Midrand"
             />
           </Reveal>
         </div>
@@ -731,17 +580,11 @@ function Footer() {
               Meridian Health
             </div>
             <p style={{ marginTop: 16 }}>Compassionate healthcare for every stage of life. Serving our community with modern, patient-first medicine.</p>
-            <div className="hc-social">
-              <a href="#" aria-label="Facebook"><Icon d={I.fb} size={18} /></a>
-              <a href="#" aria-label="Instagram"><Icon d={I.ig} size={18} /></a>
-              <a href="#" aria-label="X"><Icon d={I.x} size={18} /></a>
-            </div>
           </div>
           <div>
             <h4>Quick Links</h4>
             <a href="#about">About</a>
             <a href="#services">Services</a>
-            <a href="#doctors">Doctors</a>
             <a href="#appointment">Book Appointment</a>
             <a href="#faq">FAQ</a>
           </div>
@@ -752,13 +595,13 @@ function Footer() {
           <div>
             <h4>Contact</h4>
             <a href={CLINIC.phoneHref}>{CLINIC.phone}</a>
-            <a href={`mailto:${CLINIC.email}`}>{CLINIC.email}</a>
+            <span style={{ color: "#c5d3e0", display: "block", padding: "5px 0", fontSize: 14 }}>{CLINIC.email}</span>
             <a href="#contact">{CLINIC.address}</a>
           </div>
         </div>
         <div className="hc-footer-bottom">
           <span>© {new Date().getFullYear()} {CLINIC.name}. All rights reserved.</span>
-          <span><a href="#" style={{ color: "#8fa2b6" }}>Privacy Policy</a> · <a href="#" style={{ color: "#8fa2b6" }}>Terms</a></span>
+          <span>Developed by <a href="https://NKOgallardo.link" target="_blank" rel="noopener noreferrer" style={{ color: "#8fa2b6" }}>NKO</a></span>
         </div>
       </div>
     </footer>
