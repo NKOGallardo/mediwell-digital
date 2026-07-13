@@ -16,7 +16,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 function Navbar() {
   const [open, setOpen] = useState(false);
-  const links = [
+  const links: { label: string; to: string; hash?: string }[] = [
     { label: "Home", to: "/" },
     { label: "About", to: "/", hash: "about" },
     { label: "Services", to: "/", hash: "services" },
@@ -25,7 +25,7 @@ function Navbar() {
     { label: "Hours", to: "/", hash: "hours" },
     { label: "FAQ", to: "/", hash: "faq" },
     { label: "Contact", to: "/", hash: "contact" },
-  ] as const;
+  ];
 
   return (
     <header className="hc-nav">
