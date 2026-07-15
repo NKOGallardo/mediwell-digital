@@ -1,5 +1,5 @@
 export const CLINIC = {
-  name: "Meridian Health Centre",
+  name: "Elegant Healthcare Centre",
   tagline: "Compassionate care for every stage of life",
   phone: "083 727 5737",
   phoneHref: "tel:+27837275737",

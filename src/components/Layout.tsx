@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { CLINIC } from "../lib/clinic";
 import { Icon, I } from "./Icon";
+import logoAsset from "../assets/logo.jpg.asset.json";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -31,10 +32,8 @@ function Navbar() {
     <header className="hc-nav">
       <div className="hc-container hc-nav-inner">
         <Link to="/" className="hc-logo" aria-label={CLINIC.name}>
-          <span className="hc-logo-mark" aria-hidden="true">
-            <Icon d={I.heart} size={18} />
-          </span>
-          Meridian Health
+          <img src={logoAsset.url} alt="Elegant Healthcare Centre" style={{ height: 40, width: "auto", display: "block" }} />
+          Elegant Healthcare
         </Link>
         <nav className="hc-nav-links mobile-hidden" aria-label="Primary">
           {links.map((l) => (
@@ -84,8 +83,8 @@ function Footer() {
         <div className="hc-footer-grid">
           <div className="hc-footer-brand">
             <div className="hc-logo" style={{ color: "#fff" }}>
-              <span className="hc-logo-mark" aria-hidden="true"><Icon d={I.heart} size={18} /></span>
-              Meridian Health
+              <img src={logoAsset.url} alt="Elegant Healthcare Centre" style={{ height: 40, width: "auto", display: "block", background: "#fff", borderRadius: 6, padding: 2 }} />
+              Elegant Healthcare
             </div>
             <p style={{ marginTop: 16 }}>Compassionate healthcare for every stage of life. Serving our community with modern, patient-first medicine.</p>
           </div>

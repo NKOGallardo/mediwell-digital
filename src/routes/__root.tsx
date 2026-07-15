@@ -78,13 +78,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Meridian Health Centre — Trusted Family Doctors & Medical Care" },
+      { title: "Elegant Healthcare Centre — Trusted Family Doctors & Medical Care" },
       {
         name: "description",
         content:
           "Compassionate, professional family medicine, chronic care, women's & men's health, paediatrics, vaccinations and screening. Book online.",
       },
-      { property: "og:site_name", content: "Meridian Health Centre" },
+      { property: "og:site_name", content: "Elegant Healthcare Centre" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -97,7 +97,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: siteCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.jpg", type: "image/jpeg" },
     ],
   }),
   shellComponent: RootShell,
