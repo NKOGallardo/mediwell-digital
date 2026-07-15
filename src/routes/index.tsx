@@ -13,7 +13,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Meridian Health Centre offers IV therapy drips, reproductive & maternity care, general healthcare, screenings and procedures. Book today.",
+          "Elegant Healthcare Centre offers IV therapy drips, reproductive & maternity care, general healthcare, screenings and procedures. Book today.",
       },
       {
         name: "keywords",
@@ -127,7 +127,7 @@ function Hero() {
           </h1>
           <p>
             Trusted family doctors delivering personalised, evidence-based care.
-            From IV wellness drips to maternity care — Meridian Health is here for
+            From IV wellness drips to maternity care — Elegant Healthcare is here for
             every stage of your life.
           </p>
           <div className="hc-hero-actions">
@@ -177,7 +177,7 @@ function About() {
         <Reveal className="hc-section-head">
           <span className="hc-eyebrow"><span className="hc-eyebrow-dot" /> About Us</span>
           <h2>Care that treats you like a person, not a chart</h2>
-          <p>Meridian Health Centre combines modern medicine with the kind of personal attention every patient deserves.</p>
+          <p>Elegant Healthcare Centre combines modern medicine with the kind of personal attention every patient deserves.</p>
         </Reveal>
         <div className="hc-about-grid">
           {cards.map((c, i) => (

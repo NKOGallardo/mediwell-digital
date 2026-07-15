@@ -8,9 +8,9 @@ export const Route = createFileRoute("/services/iv-therapy")({
   component: () => <ServicePage category={category} />,
   head: () => ({
     meta: [
-      { title: `${category.title} — Meridian Health Centre` },
-      { name: "description", content: `${category.blurb} Book ${category.title.toLowerCase()} at Meridian Health Centre in Noordwyk, Midrand.` },
-      { property: "og:title", content: `${category.title} — Meridian Health Centre` },
+      { title: `${category.title} — Elegant Healthcare Centre` },
+      { name: "description", content: `${category.blurb} Book ${category.title.toLowerCase()} at Elegant Healthcare Centre in Noordwyk, Midrand.` },
+      { property: "og:title", content: `${category.title} — Elegant Healthcare Centre` },
       { property: "og:description", content: category.blurb },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/services/iv-therapy" },

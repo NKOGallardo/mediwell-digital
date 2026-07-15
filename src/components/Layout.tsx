@@ -34,7 +34,7 @@ function Navbar() {
           <span className="hc-logo-mark" aria-hidden="true">
             <Icon d={I.heart} size={18} />
           </span>
-          Meridian Health
+          Elegant Healthcare
         </Link>
         <nav className="hc-nav-links mobile-hidden" aria-label="Primary">
           {links.map((l) => (
@@ -85,7 +85,7 @@ function Footer() {
           <div className="hc-footer-brand">
             <div className="hc-logo" style={{ color: "#fff" }}>
               <span className="hc-logo-mark" aria-hidden="true"><Icon d={I.heart} size={18} /></span>
-              Meridian Health
+              Elegant Healthcare
             </div>
             <p style={{ marginTop: 16 }}>Compassionate healthcare for every stage of life. Serving our community with modern, patient-first medicine.</p>
           </div>
