@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { CLINIC } from "../lib/clinic";
 import { Icon, I } from "./Icon";
+import logoAsset from "../assets/logo.jpg.asset.json";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
