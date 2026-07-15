@@ -614,3 +614,49 @@ button { font-family: inherit; cursor: pointer; }
 
 /* Page hero compact */
 .hc-hero h1 { font-size: clamp(2rem, 4vw, 3rem); }
+
+/* Small phones (<=400px, incl. 353px) */
+@media (max-width: 400px) {
+  .hc-container { padding: 0 16px; }
+  .hc-nav-inner { padding: 12px 0; }
+  .hc-logo { font-size: 16px; gap: 8px; }
+  .hc-logo img { height: 32px !important; }
+  .hc-btn { padding: 11px 18px; font-size: 14px; }
+  .hc-hero { padding: 56px 0 64px; }
+  .hc-hero h1 { font-size: clamp(1.7rem, 8vw, 2rem); }
+  .hc-hero p { font-size: 1rem; }
+  .hc-hero-actions { flex-direction: column; align-items: stretch; }
+  .hc-hero-actions .hc-btn { width: 100%; }
+  .hc-hero-panel { padding: 22px; }
+  .hc-hero-panel-title { font-size: 1.3rem; }
+  .hc-section { padding: 64px 0; }
+  .hc-section-head { margin-bottom: 40px; }
+  .hc-section-head h2 { font-size: 1.6rem; }
+  .hc-about-card,
+  .hc-service,
+  .hc-service-cat,
+  .hc-pricing-card,
+  .hc-contact-card,
+  .hc-medicalaid-partners,
+  .hc-medicalaid-card { padding: 22px 18px; }
+  .hc-service-cat-head { gap: 12px; }
+  .hc-form { padding: 24px 18px; border-radius: var(--hc-radius); }
+  .hc-hours-row { padding: 14px 16px; flex-wrap: wrap; gap: 6px; }
+  .hc-doctor-body { padding: 18px 18px 22px; }
+  .hc-doctor-initials span { font-size: 2.2rem; }
+  .hc-cta-box { padding: 24px 20px; }
+  .hc-cta-box h3 { font-size: 1.15rem; }
+  .hc-cta-box-actions { width: 100%; }
+  .hc-cta-box-actions .hc-btn { flex: 1 1 auto; }
+  .hc-pricing-disclaimer { padding: 18px; gap: 12px; }
+  .hc-faq-q { padding: 16px 18px; font-size: .95rem; }
+  .hc-faq-item.open .hc-faq-a,
+  .hc-faq-a { padding-left: 18px; padding-right: 18px; }
+  .hc-footer { padding: 56px 0 24px; }
+  .hc-footer-bottom { flex-direction: column; align-items: flex-start; }
+  .hc-whatsapp { width: 50px; height: 50px; bottom: 16px; right: 16px; }
+  .hc-scrolltop { width: 40px; height: 40px; bottom: 76px; right: 16px; }
+  .hc-nav-mobile { padding: 10px 16px 16px; }
+  .hc-map, .hc-map iframe { min-height: 300px; }
+}
+
