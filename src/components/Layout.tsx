@@ -32,9 +32,7 @@ function Navbar() {
     <header className="hc-nav">
       <div className="hc-container hc-nav-inner">
         <Link to="/" className="hc-logo" aria-label={CLINIC.name}>
-          <span className="hc-logo-mark" aria-hidden="true">
-            <Icon d={I.heart} size={18} />
-          </span>
+          <img src={logoAsset.url} alt="Elegant Healthcare Centre" style={{ height: 40, width: "auto", display: "block" }} />
           Elegant Healthcare
         </Link>
         <nav className="hc-nav-links mobile-hidden" aria-label="Primary">
