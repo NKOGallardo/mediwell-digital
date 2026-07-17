@@ -73,7 +73,7 @@ function PricingPage() {
                 <a href={CLINIC.phoneHref} className="hc-btn hc-btn-outline">
                   <Icon d={I.phone} size={18} /> {CLINIC.phone}
                 </a>
-                <Link to="/" hash="appointment" className="hc-btn hc-btn-primary">
+                <Link to="/#appointment" className="hc-btn hc-btn-primary">
                   <Icon d={I.plus} size={18} /> Book online
                 </Link>
               </div>

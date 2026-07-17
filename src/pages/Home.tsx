@@ -94,7 +94,7 @@ function Hero() {
             every stage of your life.
           </p>
           <div className="hc-hero-actions">
-            <Link to="/" hash="appointment" className="hc-btn hc-btn-primary">
+            <Link to="/#appointment" className="hc-btn hc-btn-primary">
               <Icon d={I.plus} size={18} /> Book Appointment
             </Link>
             <a href={CLINIC.phoneHref} className="hc-btn hc-btn-ghost">
