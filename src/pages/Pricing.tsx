@@ -1,26 +1,24 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { CLINIC } from "../lib/clinic";
 import { priceCategories } from "../lib/pricing";
 import { Icon, I } from "../components/Icon";
 import { Reveal } from "../components/Reveal";
 import { Layout } from "../components/Layout";
+import { useSeo } from "../lib/seo";
 
-export const Route = createFileRoute("/pricing")({
-  component: PricingPage,
-  head: () => ({
+export default function PricingPage() {
+  useSeo({
+    title: `Pricing — ${CLINIC.name}`,
+    description: `Transparent pricing for IV therapy, reproductive health, maternity care, general healthcare and screenings at ${CLINIC.name} in Noordwyk, Midrand.`,
+    canonical: "/pricing",
     meta: [
-      { title: `Pricing — ${CLINIC.name}` },
-      { name: "description", content: `Transparent pricing for IV therapy, reproductive health, maternity care, general healthcare and screenings at ${CLINIC.name} in Noordwyk, Midrand.` },
       { property: "og:title", content: `Pricing — ${CLINIC.name}` },
       { property: "og:description", content: "Transparent pricing for IV drips, family planning, maternity care, general healthcare and screenings." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/pricing" },
     ],
-    links: [{ rel: "canonical", href: "/pricing" }],
-  }),
-});
+  });
 
-function PricingPage() {
   return (
     <Layout>
       <section className="hc-hero" style={{ paddingTop: 64, paddingBottom: 64 }}>
@@ -73,7 +71,7 @@ function PricingPage() {
                 <a href={CLINIC.phoneHref} className="hc-btn hc-btn-outline">
                   <Icon d={I.phone} size={18} /> {CLINIC.phone}
                 </a>
-                <Link to="/" hash="appointment" className="hc-btn hc-btn-primary">
+                <Link to="/#appointment" className="hc-btn hc-btn-primary">
                   <Icon d={I.plus} size={18} /> Book online
                 </Link>
               </div>

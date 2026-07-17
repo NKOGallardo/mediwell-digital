@@ -1,26 +1,24 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { CLINIC } from "../lib/clinic";
 import { team } from "../lib/team";
 import { Icon, I } from "../components/Icon";
 import { Reveal } from "../components/Reveal";
 import { Layout } from "../components/Layout";
+import { useSeo } from "../lib/seo";
 
-export const Route = createFileRoute("/team")({
-  component: TeamPage,
-  head: () => ({
+export default function TeamPage() {
+  useSeo({
+    title: `Meet the Team — ${CLINIC.name}`,
+    description: `Meet the doctors, midwives and healthcare professionals at ${CLINIC.name} in Noordwyk, Midrand.`,
+    canonical: "/team",
     meta: [
-      { title: `Meet the Team — ${CLINIC.name}` },
-      { name: "description", content: `Meet the doctors, midwives and healthcare professionals at ${CLINIC.name} in Noordwyk, Midrand.` },
       { property: "og:title", content: `Meet the Team — ${CLINIC.name}` },
       { property: "og:description", content: "Experienced, compassionate healthcare professionals dedicated to your family." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/team" },
     ],
-    links: [{ rel: "canonical", href: "/team" }],
-  }),
-});
+  });
 
-function TeamPage() {
   return (
     <Layout>
       <section className="hc-hero" style={{ paddingTop: 64, paddingBottom: 64 }}>
@@ -67,7 +65,7 @@ function TeamPage() {
                 <a href={CLINIC.phoneHref} className="hc-btn hc-btn-outline">
                   <Icon d={I.phone} size={18} /> {CLINIC.phone}
                 </a>
-                <Link to="/" hash="appointment" className="hc-btn hc-btn-primary">
+                <Link to="/#appointment" className="hc-btn hc-btn-primary">
                   <Icon d={I.plus} size={18} /> Book online
                 </Link>
               </div>

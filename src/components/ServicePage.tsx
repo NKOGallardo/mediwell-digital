@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { CLINIC } from "../lib/clinic";
 import { type ServiceCategory } from "../lib/services";
 import { Icon, I } from "./Icon";
@@ -52,7 +52,7 @@ export function ServicePage({ category }: { category: ServiceCategory }) {
                 <a href={CLINIC.phoneHref} className="hc-btn hc-btn-outline">
                   <Icon d={I.phone} size={18} /> {CLINIC.phone}
                 </a>
-                <Link to="/" hash="appointment" className="hc-btn hc-btn-primary">
+                <Link to="/#appointment" className="hc-btn hc-btn-primary">
                   <Icon d={I.plus} size={18} /> Book online
                 </Link>
               </div>
