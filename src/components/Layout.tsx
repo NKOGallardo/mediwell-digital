@@ -1,8 +1,19 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import { CLINIC } from "../lib/clinic";
 import { Icon, I } from "./Icon";
 import logoAsset from "../assets/logo.jpg.asset.json";
+
+type NavLink = { label: string; to: string; hash?: string };
+
+function HashLink({ label, to, hash, className, onClick }: NavLink & { className?: string; onClick?: () => void }) {
+  const target = hash ? `${to === "/" ? "" : to}#${hash}` : to;
+  return (
+    <Link to={target} className={className} onClick={onClick}>
+      {label}
+    </Link>
+  );
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -17,7 +28,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 function Navbar() {
   const [open, setOpen] = useState(false);
-  const links: { label: string; to: string; hash?: string }[] = [
+  const { pathname, hash } = useLocation();
+  const links: NavLink[] = [
     { label: "Home", to: "/" },
     { label: "About", to: "/", hash: "about" },
     { label: "Services", to: "/", hash: "services" },
@@ -28,6 +40,11 @@ function Navbar() {
     { label: "Contact", to: "/", hash: "contact" },
   ];
 
+  const isActive = (l: NavLink) => {
+    if (l.hash) return pathname === "/" && hash === `#${l.hash}`;
+    return pathname === l.to;
+  };
+
   return (
     <header className="hc-nav">
       <div className="hc-container hc-nav-inner">
@@ -37,17 +54,9 @@ function Navbar() {
         </Link>
         <nav className="hc-nav-links mobile-hidden" aria-label="Primary">
           {links.map((l) => (
-            <Link
-              key={l.label}
-              to={l.to}
-              hash={l.hash}
-              activeProps={{ className: "active" }}
-              activeOptions={{ exact: false, includeHash: true }}
-            >
-              {l.label}
-            </Link>
+            <HashLink key={l.label} {...l} className={isActive(l) ? "active" : undefined} />
           ))}
-          <Link to="/" hash="appointment" className="hc-btn hc-btn-primary hc-nav-cta">
+          <Link to="/#appointment" className="hc-btn hc-btn-primary hc-nav-cta">
             Book Appointment
           </Link>
         </nav>
@@ -63,11 +72,9 @@ function Navbar() {
       {open && (
         <div className="hc-nav-mobile">
           {links.map((l) => (
-            <Link key={l.label} to={l.to} hash={l.hash} onClick={() => setOpen(false)}>
-              {l.label}
-            </Link>
+            <HashLink key={l.label} {...l} onClick={() => setOpen(false)} />
           ))}
-          <Link to="/" hash="appointment" className="hc-btn hc-btn-primary" onClick={() => setOpen(false)}>
+          <Link to="/#appointment" className="hc-btn hc-btn-primary" onClick={() => setOpen(false)}>
             Book Appointment
           </Link>
         </div>
@@ -90,24 +97,24 @@ function Footer() {
           </div>
           <div>
             <h4>Quick Links</h4>
-            <Link to="/" hash="about">About</Link>
-            <Link to="/" hash="services">Services</Link>
+            <Link to="/#about">About</Link>
+            <Link to="/#services">Services</Link>
             <Link to="/pricing">Pricing</Link>
             <Link to="/team">Team</Link>
-            <Link to="/" hash="appointment">Book Appointment</Link>
-            <Link to="/" hash="faq">FAQ</Link>
+            <Link to="/#appointment">Book Appointment</Link>
+            <Link to="/#faq">FAQ</Link>
           </div>
           <div>
             <h4>Services</h4>
             {["IV Therapy", "Reproductive Health", "Maternity Care", "General Healthcare", "Screenings"].map((n) => (
-              <Link key={n} to="/" hash="services">{n}</Link>
+              <Link key={n} to="/#services">{n}</Link>
             ))}
           </div>
           <div>
             <h4>Contact</h4>
             <a href={CLINIC.phoneHref}>{CLINIC.phone}</a>
             <span style={{ color: "#c5d3e0", display: "block", padding: "5px 0", fontSize: 14 }}>{CLINIC.email}</span>
-            <Link to="/" hash="contact">{CLINIC.address}</Link>
+            <Link to="/#contact">{CLINIC.address}</Link>
           </div>
         </div>
         <div className="hc-footer-bottom">
