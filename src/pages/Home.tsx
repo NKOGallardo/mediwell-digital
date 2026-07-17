@@ -1,82 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { CLINIC } from "../lib/clinic";
 import { serviceCategories } from "../lib/services";
 import { Icon, I } from "../components/Icon";
 import { Reveal } from "../components/Reveal";
 import { Layout } from "../components/Layout";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: `${CLINIC.name} — Trusted Family Doctors & Medical Care` },
-      {
-        name: "description",
-        content:
-          "Elegant Healthcare Centre offers IV therapy drips, reproductive & maternity care, general healthcare, screenings and procedures. Book today.",
-      },
-      {
-        name: "keywords",
-        content:
-          "healthcare centre, IV therapy, vitamin drip, family planning, maternity care, antenatal, HIV testing, health screening, Midrand clinic",
-      },
-      { property: "og:title", content: `${CLINIC.name} — Trusted Family Doctors` },
-      {
-        property: "og:description",
-        content:
-          "Modern, patient-first medical practice offering IV drips, reproductive & maternity care, and general healthcare.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: `${CLINIC.name}` },
-      {
-        name: "twitter:description",
-        content: "Compassionate, professional healthcare for the whole family.",
-      },
-      { name: "theme-color", content: "#10b1a6" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "MedicalClinic",
-          name: CLINIC.name,
-          url: CLINIC.url,
-          telephone: "+27837275737",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Imbuia Crescent",
-            addressLocality: "Noordwyk, Midrand",
-            addressCountry: "ZA",
-          },
-          openingHoursSpecification: [
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              opens: "07:30",
-              closes: "18:00",
-            },
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: "Saturday",
-              opens: "08:00",
-              closes: "14:00",
-            },
-          ],
-          medicalSpecialty: [
-            "FamilyPractice",
-            "Obstetric",
-            "PreventiveMedicine",
-          ],
-        }),
-      },
-    ],
-  }),
-  component: HomePage,
-});
+import { useSeo } from "../lib/seo";
 
 const faqs = [
   { q: "Do I need to book an appointment?", a: "We recommend booking in advance to secure your preferred time, but walk-ins are welcome during regular hours based on availability." },
@@ -86,7 +15,41 @@ const faqs = [
   { q: "Is parking available on site?", a: "Yes, secure covered parking is provided for all patients free of charge." },
 ];
 
-function HomePage() {
+export default function HomePage() {
+  useSeo({
+    title: `${CLINIC.name} — Trusted Family Doctors & Medical Care`,
+    description: "Elegant Healthcare Centre offers IV therapy drips, reproductive & maternity care, general healthcare, screenings and procedures. Book today.",
+    canonical: "/",
+    meta: [
+      { name: "keywords", content: "healthcare centre, IV therapy, vitamin drip, family planning, maternity care, antenatal, HIV testing, health screening, Midrand clinic" },
+      { property: "og:title", content: `${CLINIC.name} — Trusted Family Doctors` },
+      { property: "og:description", content: "Modern, patient-first medical practice offering IV drips, reproductive & maternity care, and general healthcare." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:title", content: CLINIC.name },
+      { name: "twitter:description", content: "Compassionate, professional healthcare for the whole family." },
+    ],
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "MedicalClinic",
+      name: CLINIC.name,
+      url: CLINIC.url,
+      telephone: "+27837275737",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Imbuia Crescent",
+        addressLocality: "Noordwyk, Midrand",
+        addressCountry: "ZA",
+      },
+      openingHoursSpecification: [
+        { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "07:30", closes: "18:00" },
+        { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "08:00", closes: "14:00" },
+      ],
+      medicalSpecialty: ["FamilyPractice", "Obstetric", "PreventiveMedicine"],
+    },
+  });
+
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const t = setTimeout(() => setLoading(false), 500);
