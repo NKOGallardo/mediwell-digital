@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CLINIC } from "../lib/clinic";
 import { Icon, I } from "./Icon";
-import logoAsset from "../assets/logo.jpg.asset.json";
+import logoAsset from "../assets/logo.jpeg";
 
 type NavLink = { label: string; to: string; hash?: string };
 
@@ -49,7 +49,7 @@ function Navbar() {
     <header className="hc-nav">
       <div className="hc-container hc-nav-inner">
         <Link to="/" className="hc-logo" aria-label={CLINIC.name}>
-          <img src={logoAsset.url} alt="Elegant Healthcare Centre" style={{ height: 40, width: "auto", display: "block" }} />
+          <img src={logoAsset} alt="Elegant Healthcare Centre" style={{ height: 40, width: "auto", display: "block" }} />
           Elegant Healthcare
         </Link>
         <nav className="hc-nav-links mobile-hidden" aria-label="Primary">
@@ -90,7 +90,7 @@ function Footer() {
         <div className="hc-footer-grid">
           <div className="hc-footer-brand">
             <div className="hc-logo" style={{ color: "#fff" }}>
-              <img src={logoAsset.url} alt="Elegant Healthcare Centre" style={{ height: 40, width: "auto", display: "block", background: "#fff", borderRadius: 6, padding: 2 }} />
+              <img src={logoAsset} alt="Elegant Healthcare Centre" style={{ height: 40, width: "auto", display: "block", background: "#fff", borderRadius: 6, padding: 2 }} />
               Elegant Healthcare
             </div>
             <p style={{ marginTop: 16 }}>Compassionate healthcare for every stage of life. Serving our community with modern, patient-first medicine.</p>
