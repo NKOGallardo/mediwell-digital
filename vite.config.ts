@@ -4,6 +4,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+  base: "/mediwell-digital/",
   plugins: [react(), tsconfigPaths(), tailwindcss()],
   server: {
     host: "::",
